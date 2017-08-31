@@ -12,15 +12,23 @@ import java.util.Date;
  * @version     1.02
  */
 public class Employee {
-    String firstName;
-    String lastName;
-    public String ssn;
-    boolean metWithHr;
-    boolean metDeptStaff;
-    boolean reviewedDeptPolicies;
-    boolean movedIn;
-    String cubeId;
-    Date orientationDate;
+    private String firstName;
+    private String lastName;
+    private String ssn;
+    private boolean metWithHr;
+    private boolean metDeptStaff;
+    private boolean reviewedDeptPolicies;
+    private boolean movedIn;
+    private String cubeId;
+    private Date orientationDate;
+    
+    
+    public Employee(String firstName, String lastName, String ssn) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.ssn = ssn;
+    }
+   
 
 
 
