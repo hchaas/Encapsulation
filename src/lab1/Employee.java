@@ -80,11 +80,20 @@ public class Employee {
     }
 
     public void setCubeId(String cubeId) {
-        this.cubeId = cubeId;
+        if (validateEntry(cubeId)){
+            this.cubeId = cubeId;
+        }
     }
 
     public void setOrientationDate(Date orientationDate) {
-        this.orientationDate = orientationDate;
+        Date dateToday = new Date();
+        
+        if (orientationDate.after(dateToday)){
+            System.out.println("Invalid entry; try again.");
+        }
+        else {
+            this.orientationDate = orientationDate;
+        }
     }
 
     /* Getters */
