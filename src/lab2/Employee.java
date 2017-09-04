@@ -31,12 +31,18 @@ public class Employee {
     private Date orientationDate;
 
     public Employee(String firstName, String lastName, String ssn) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ssn = ssn;
+        if (validateEntry(firstName)) {
+            this.firstName = firstName;
+        }
+        if (validateEntry(lastName)) {
+            this.lastName = lastName;
+        }
+        if (validateEntry(ssn)) {
+            this.ssn = ssn;
+        }
     }
-
-    // Assume this must be performed first, and assume that an employee
+    
+    // Assume that an employee
     // would only do this once, upon being hired.
     public void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
@@ -46,7 +52,7 @@ public class Employee {
             + fmtDate);
     }
 
-    // Assume this must be performed first, and assume that an employee
+    // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
     public void meetDepartmentStaff() {
         metDeptStaff = true;
@@ -79,15 +85,28 @@ public class Employee {
                 + cubeId + " on " + fmtDate);
     }
 
+    
+    
+    
+    
+    
+    public boolean validateEntry(String toBeValidated) {
+        if (toBeValidated.length() < 1) {
+            System.out.println("Invalid entry; try again.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
     public String getFirstName() {
         return firstName;
     }
 
-    // setter methods give the developer the power to control what data is
-    // allowed through validation.
-    
     public void setFirstName(String firstName) {
-       this.firstName = firstName;
+        if (validateEntry(firstName)) {
+            this.firstName = firstName;
+        }
     }
 
     public String getLastName() {
@@ -95,7 +114,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
-       this.lastName = lastName;
+        if (validateEntry(lastName)) {
+            this.lastName = lastName;
+        }
     }
 
     public String getSsn() {
@@ -103,14 +124,17 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        if (ssn.length() == 9) {
+            this.ssn = ssn;
+        } else {
+            System.out.println("Invalid entry; try again");
+        }
     }
 
     public boolean isMetWithHr() {
         return metWithHr;
     }
 
-    // boolean parameters need no validation
     public void setMetWithHr(boolean metWithHr) {
         this.metWithHr = metWithHr;
     }
@@ -143,9 +167,10 @@ public class Employee {
         return cubeId;
     }
 
-    
     public void setCubeId(String cubeId) {
-        this.cubeId = cubeId;
+        if (validateEntry(cubeId)) {
+            this.cubeId = cubeId;
+        }
     }
 
     public Date getOrientationDate() {
@@ -153,5 +178,13 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
-        this.orientationDate = orientationDate;
-    }}
+        Date dateToday = new Date();
+
+        if (orientationDate.after(dateToday)) {
+            System.out.println("Invalid entry; try again.");
+        } else {
+            this.orientationDate = orientationDate;
+        }
+    }
+
+}
