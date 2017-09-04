@@ -24,119 +24,113 @@ public class Employee {
     private Date orientationDate;
 
     public Employee(String firstName, String lastName, String ssn) {
-        if(validateEntry(firstName)){
+        if (validateEntry(firstName)) {
             this.firstName = firstName;
         }
-        if (validateEntry(lastName)){
+        if (validateEntry(lastName)) {
             this.lastName = lastName;
         }
-        if (validateEntry(ssn)){
+        if (validateEntry(ssn)) {
             this.ssn = ssn;
         }
     }
 
     /*Validation method */
-    
-    public boolean validateEntry(String toBeValidated){
-        if (toBeValidated.length()<1){
+    public boolean validateEntry(String toBeValidated) {
+        if (toBeValidated.length() < 1) {
             System.out.println("Invalid entry; try again.");
             return false;
-        }
-        else
+        } else {
             return true;
+        }
     }
     
-    /* Setters */
-    
-    public void setFirstName(String firstName) {
-        if (validateEntry(firstName)){
-            this.firstName = firstName;
-        } 
-    }
-
-    public void setLastName(String lastName) {
-        if (validateEntry(lastName)){
-            this.lastName = lastName;
-        }
-    }
-
-    public void setSsn(String ssn) {
-        if (ssn.length() == 9){
-            this.ssn = ssn;
-        }
-        else {
-            System.out.println("Invalid entry; try again");
-        }
-    }
-
-    public void setMetWithHr(boolean metWithHr) {
-        this.metWithHr = metWithHr;
-    }
-
-    public void setMetDeptStaff(boolean metDeptStaff) {
-        this.metDeptStaff = metDeptStaff;
-    }
-
-    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
-        this.reviewedDeptPolicies = reviewedDeptPolicies;
-    }
-
-    public void setMovedIn(boolean movedIn) {
-        this.movedIn = movedIn;
-    }
-
-    public void setCubeId(String cubeId) {
-        if (validateEntry(cubeId)){
-            this.cubeId = cubeId;
-        }
-    }
-
-    public void setOrientationDate(Date orientationDate) {
-        Date dateToday = new Date();
-        
-        if (orientationDate.after(dateToday)){
-            System.out.println("Invalid entry; try again.");
-        }
-        else {
-            this.orientationDate = orientationDate;
-        }
-    }
-
-    /* Getters */
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        if (validateEntry(firstName)) {
+            this.firstName = firstName;
+        }
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        if (validateEntry(lastName)) {
+            this.lastName = lastName;
+        }
+    }
+
     public String getSsn() {
         return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        if (ssn.length() == 9) {
+            this.ssn = ssn;
+        } else {
+            System.out.println("Invalid entry; try again");
+        }
     }
 
     public boolean isMetWithHr() {
         return metWithHr;
     }
 
+    public void setMetWithHr(boolean metWithHr) {
+        this.metWithHr = metWithHr;
+    }
+
     public boolean isMetDeptStaff() {
         return metDeptStaff;
+    }
+
+    public void setMetDeptStaff(boolean metDeptStaff) {
+        this.metDeptStaff = metDeptStaff;
     }
 
     public boolean isReviewedDeptPolicies() {
         return reviewedDeptPolicies;
     }
 
+    public void setReviewedDeptPolicies(boolean reviewedDeptPolicies) {
+        this.reviewedDeptPolicies = reviewedDeptPolicies;
+    }
+
     public boolean isMovedIn() {
         return movedIn;
+    }
+
+    public void setMovedIn(boolean movedIn) {
+        this.movedIn = movedIn;
     }
 
     public String getCubeId() {
         return cubeId;
     }
 
+    public void setCubeId(String cubeId) {
+        if (validateEntry(cubeId)) {
+            this.cubeId = cubeId;
+        }
+    }
+
     public Date getOrientationDate() {
         return orientationDate;
+    }
+
+    public void setOrientationDate(Date orientationDate) {
+        Date dateToday = new Date();
+
+        if (orientationDate.after(dateToday)) {
+            System.out.println("Invalid entry; try again.");
+        } else {
+            this.orientationDate = orientationDate;
+        }
     }
 
 }
