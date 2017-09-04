@@ -29,17 +29,38 @@ public class Employee {
         this.ssn = ssn;
     }
 
+    /*Validation methods */
+    
+    public boolean validateEntry(String toBeValidated){
+        if (toBeValidated.length()<1){
+            System.out.println("Invalid entry; try again.");
+            return false;
+        }
+        else
+            return true;
+    }
+    
     /* Setters */
+    
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if (validateEntry(firstName)){
+            this.firstName = firstName;
+        } 
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if (validateEntry(lastName)){
+            this.lastName = lastName;
+        }
     }
 
     public void setSsn(String ssn) {
-        this.ssn = ssn;
+        if (ssn.length() == 9){
+            this.ssn = ssn;
+        }
+        else {
+            System.out.println("Invalid entry; try again");
+        }
     }
 
     public void setMetWithHr(boolean metWithHr) {
