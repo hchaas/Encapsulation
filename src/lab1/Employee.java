@@ -24,12 +24,18 @@ public class Employee {
     private Date orientationDate;
 
     public Employee(String firstName, String lastName, String ssn) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.ssn = ssn;
+        if(validateEntry(firstName)){
+            this.firstName = firstName;
+        }
+        if (validateEntry(lastName)){
+            this.lastName = lastName;
+        }
+        if (validateEntry(ssn)){
+            this.ssn = ssn;
+        }
     }
 
-    /*Validation methods */
+    /*Validation method */
     
     public boolean validateEntry(String toBeValidated){
         if (toBeValidated.length()<1){
