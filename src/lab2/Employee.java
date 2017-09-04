@@ -42,12 +42,16 @@ public class Employee {
             this.ssn = ssn;
         }
         
+        this.firstTimeEmployee();
+    }
+    
+    public void firstTimeEmployee(String cubeId){
+        orientationDate = new Date();
         this.meetWithHrForBenefitAndSalryInfo();
         this.meetDepartmentStaff();
         this.reviewDeptPolicies();
         this.moveIntoCubicle(cubeId);
     }
-    
     // Assume that an employee
     // would only do this once, upon being hired.
     
