@@ -79,23 +79,22 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         this.setReviewedDeptPolicies(reviewedDeptPolicies);
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        formattedDate = this.getDate(orientationDate);
+                
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + fmtDate);
+            + formattedDate);
     }
 
     // Assume this must be performed 4th. And assume that because employees
     // sometimes change office locations that this method may need to be called 
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
-        this.cubeId = cubeId;
-        this.movedIn = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        this.setCubeId(cubeId);
+        this.setMovedIn(movedIn);
+        formattedDate = this.getDate(orientationDate);
+       
         System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + fmtDate);
+                + cubeId + " on " + formattedDate);
     }
 
     
