@@ -29,6 +29,7 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private String formattedDate;
 
     public Employee(String firstName, String lastName, String ssn) {
         if (validateEntry(firstName)) {
@@ -40,33 +41,45 @@ public class Employee {
         if (validateEntry(ssn)) {
             this.ssn = ssn;
         }
+        
+        this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeId);
     }
     
     // Assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
-        metWithHr = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+    
+    public String getDate(Date date){
+        DateUtilities newDate = new DateUtilities();
+        return newDate.getFormattedDate(date); 
+    }
+    
+    private void meetWithHrForBenefitAndSalryInfo() {
+        this.setMetWithHr(metWithHr);
+        formattedDate = this.getDate(orientationDate);
+               
         System.out.println(firstName + " " + lastName + " met with Hr on "
-            + fmtDate);
+            + formattedDate);
     }
 
     // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
-        metDeptStaff = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+    private void meetDepartmentStaff() {
+        this.setMetDeptStaff(metDeptStaff);
+        formattedDate = this.getDate(orientationDate);
+               
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + fmtDate);
+            + formattedDate);
     }
 
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
     public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
+        this.setReviewedDeptPolicies(reviewedDeptPolicies);
+        
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
@@ -85,10 +98,6 @@ public class Employee {
                 + cubeId + " on " + fmtDate);
     }
 
-    
-    
-    
-    
     
     public boolean validateEntry(String toBeValidated) {
         if (toBeValidated.length() < 1) {
