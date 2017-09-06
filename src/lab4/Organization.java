@@ -9,7 +9,7 @@ public class Organization {
     }
     
     public void hireNewEmployee(String firstName, String lastName, String ssn){
-        manager.hireNewEmployee(firstName, lastName, ssn);
+        manager.hireEmployee(firstName, lastName, ssn);
         
     }
     
